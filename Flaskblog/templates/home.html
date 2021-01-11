@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for Post in Posts.items %}
+<article class="media content-section border p-3 mt-3">
+  <img src="{{ url_for('static', filename='profile_pic/' + Post.author.image_file)}}"
+    class="mr-3 mt-1 rounded-circle profile-img" alt="">
+  <div class="media-body">
+    <div class="article-metadata">
+      <h4><a class="mr-2 username-color"
+          href="{{ url_for('user_profile', username=Post.author.username) }}">{{Post.author.username}}</a></h4>
+    </div>
+    <h4><a href="{{url_for('post', post_id=Post.id)}}" class="article-title">{{Post.title}}</a></h4>
+    <p class="article-content">{{Post.content}}</p>
+    <small class="float-right"><i>Posted on {{Post.date_posted.strftime('%d-%B,%Y')}}</i></small>
+  </div>
+</article>
+{% endfor %}
+
+{% for page_num in Posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+{% if page_num %}
+{% if Posts.page == page_num %}
+<a href="{{url_for('home', page=page_num)}}" class="btn btn-info mb-4">{{ page_num }}</a>
+{% else %}
+<a href="{{url_for('home', page=page_num)}}" class="btn btn-outline-info mb-4">{{ page_num }}</a>
+{% endif %}
+
+{% else %}
+...
+{% endif %}
+{% endfor %}
+
+{% endblock %}

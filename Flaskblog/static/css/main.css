@@ -1,0 +1,41 @@
+body,
+* {
+  margin: 0;
+}
+
+.navbar-color {
+  background-color: #001a23 !important;
+}
+.nav-link-color {
+  color: #f5f5f5;
+}
+
+.font-size-18 {
+  font-size: 1.125rem;
+}
+.font-size-27 {
+  font-size: 1.7rem;
+}
+.username-color {
+  color: #001a23;
+  text-decoration: none;
+}
+.username-color:hover {
+  text-decoration: none;
+}
+.profile-img {
+  width: 60px;
+  height: 60px;
+}
+.user-profile-img {
+  width: 138px;
+  height: 130px;
+}
+.image-div {
+  border-radius: 50%;
+}
+.border{
+  border:1px solid #dee2e6!important;
+  border-radius: 5px;
+}
+

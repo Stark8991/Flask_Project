@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="content-section">
+    <div class="media">
+        <img src="{{url_for('static', filename = 'profile_pic/' + user.image_file)}}" alt="userimage"
+            class="rounded-circle account-img user-profile-img mr-3">
+        <div class=" media-body">
+            <h3>User: {{user.username}}</h3>
+            <h4>Total Post: {{ Total_Post }}</h4>
+        </div>
+    </div>
+    {% for Post in user.posts %}
+    <article class="media content-section border p-3 mt-3">
+        <div class="media-body">
+            <div class="article-metadata">
+                <h4>{{Post.author.username}}</h4>
+            </div>
+            <h4><a href="{{url_for('post', post_id=Post.id)}}" class="article-title">{{Post.title}}</a></h4>
+            <p class="article-content">{{Post.content}}</p>
+            <small class="float-right"><i>Posted on {{Post.date_posted.strftime('%d-%B,%Y')}}</i></small>
+        </div>
+    </article>
+    {% endfor %}
+</div>
+{% endblock %}
